@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	min-height: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	/* max-width: 100vh; */
+}
+
+body {
+	background: radial-gradient(at top left, #383e56 0%, #726a95 100%);
+	min-height: 100%;
+	background-repeat: no-repeat;
+}
