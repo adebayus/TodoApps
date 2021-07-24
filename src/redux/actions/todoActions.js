@@ -32,9 +32,15 @@ export const doneHandler = ({ key, todos }) => {
 
 export const addTodoHandler = ({ todos, title }) => {
 	const duplicateState = [...todos];
+	const randomID = Math.round(Math.random() * 1000);
+	// const isIdUsed = duplicateState.((todo) => todo.id === randomID);
+
+	// console.log(isIdUsed, randomID, 'random');
+
 	const newTodo = {
 		title: title,
 		isDone: false,
+		id: randomID,
 	};
 
 	duplicateState.push(newTodo);

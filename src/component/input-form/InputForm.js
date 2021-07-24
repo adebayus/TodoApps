@@ -7,17 +7,18 @@ import { connect } from 'react-redux';
 function InputForm({ addHandler, todos }) {
 	const [addTodo, setAddTodo] = useState('');
 
-	const handleChange = (event) => {
-		setAddTodo(event.target.value);
+	const handleChange = (e) => {
+		setAddTodo(e.target.value);
+		console.log(addTodo);
 	};
-	const handleSubmit = (event) => {
+	const handleSubmit = (e, addTodo, todos) => {
 		const values = {
 			todos: [...todos],
 			title: addTodo,
 		};
 		addHandler(values);
 		setAddTodo('');
-		event.preventDefault();
+		e.preventDefault();
 	};
 
 	return (
@@ -33,7 +34,7 @@ function InputForm({ addHandler, todos }) {
 					className='w-full flex-grow-0 bg-#383e56 text-white rounded cursor-pointer'
 					type='submit'
 					value='Add Todo'
-					onClick={handleSubmit}
+					onClick={(e) => handleSubmit(e, addTodo, todos)}
 				/>
 			</div>
 		</Border>
@@ -47,7 +48,7 @@ const mapStateToProps = ({ Todos }) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		addHandler: (values) => {
-			addTodoHandler(values);
+			dispatch(addTodoHandler(values));
 		},
 	};
 };

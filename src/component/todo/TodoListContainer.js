@@ -4,24 +4,19 @@ import Border from '../layouts/Border';
 import Todo from './Todo';
 
 function TodoListContainer(props) {
+	console.log(props, 'todolistct');
 	return (
 		<Border margin='mt-10' title='Todo List'>
-			{props.todos.map((todo, index) => (
-				<Todo
-					checked={todo.isDone}
-					title={todo.title}
-					key={index}
-					id={index}
-				/>
-			))}
-			{/* <Todo detail='Not Checked' />
-			<Todo detail='Checked' checked /> */}
-			{/* <div className='w-full h-8 border-b border-gray-300'>
-				<span> Not Checked </span>
+			<div style={{ height: '225px' }}>
+				{props.todos.map((todo, index) => (
+					<Todo
+						checked={todo.isDone}
+						title={todo.title}
+						key={todo.id}
+						id={todo.id}
+					/>
+				))}
 			</div>
-			<div className='w-full h-8 border-b border-gray-300'>
-				<span>Checked</span>
-			</div> */}
 		</Border>
 	);
 }

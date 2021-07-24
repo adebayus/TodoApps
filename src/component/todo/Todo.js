@@ -4,7 +4,7 @@ import { AiOutlineCheck, AiOutlineClose } from 'react-icons/ai';
 import { connect } from 'react-redux';
 import { deleteHandler, doneHandler } from '../../redux/actions/todoActions';
 
-function Todo({ todos, doneHandler, title, checked, id }) {
+function Todo({ deleteHandler, todos, doneHandler, title, checked, id }) {
 	// const [isChecked, setisChecked] = useState(false);
 	// console.log(id);
 	// console.log(todos);
@@ -18,7 +18,7 @@ function Todo({ todos, doneHandler, title, checked, id }) {
 		doneHandler(values);
 	};
 
-	const handleDelete = () => {
+	const handleDelete = (id, todos) => {
 		const values = {
 			todos: [...todos],
 			key: id,
@@ -38,17 +38,20 @@ function Todo({ todos, doneHandler, title, checked, id }) {
 					checked ? 'line-through' : ''
 				}`}
 			>
-				<span>{title} </span>
+				<span>
+					{title}
+					{id}{' '}
+				</span>
 			</div>
 			<div className='flex items-center justify-center flex-shrink-0 flex-grow-0 w-2/12 pl-1'>
 				<span
-					onClick={handleDelete}
+					onClick={() => handleDelete(id, todos)}
 					className='cursor-pointer inline-block mx-2 text-redDanger'
 				>
 					<FaTrash />
 				</span>
 				<span
-					onClick={handleCheckButton}
+					onClick={() => handleCheckButton()}
 					className={`cursor-pointer inline-block mx-2 text-2xl ${
 						checked ? 'text-redDanger' : 'text-greenDone'
 					}`}
