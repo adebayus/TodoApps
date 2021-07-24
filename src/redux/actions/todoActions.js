@@ -5,7 +5,7 @@ import * as actionType from './actionTypes';
 // });
 
 export const deleteHandler = ({ key, todos }) => {
-	const newState = todos.filter((todo, index) => index !== key);
+	const newState = todos.filter((todo) => todo.id !== key);
 	console.log('newState', newState);
 
 	return {
@@ -16,13 +16,15 @@ export const deleteHandler = ({ key, todos }) => {
 
 export const doneHandler = ({ key, todos }) => {
 	const duplicateState = [...todos];
-	const values = duplicateState[key];
+	const findIndex = duplicateState.findIndex((todo) => todo.id === key);
+	const values = duplicateState[findIndex];
+	console.log(values, 'asdsa');
 	const newValues = {
 		...values,
 		isDone: !values.isDone,
 	};
 
-	duplicateState[key] = newValues;
+	duplicateState[findIndex] = newValues;
 
 	return {
 		type: actionType.CHANGE_DONE,

@@ -10,7 +10,7 @@ function Todo({ deleteHandler, todos, doneHandler, title, checked, id }) {
 	// console.log(todos);
 
 	// console.log(todos, 'ini todos');
-	const handleCheckButton = () => {
+	const handleCheckButton = (id, todos) => {
 		const values = {
 			todos: [...todos],
 			key: id,
@@ -51,7 +51,7 @@ function Todo({ deleteHandler, todos, doneHandler, title, checked, id }) {
 					<FaTrash />
 				</span>
 				<span
-					onClick={() => handleCheckButton()}
+					onClick={() => handleCheckButton(id, todos)}
 					className={`cursor-pointer inline-block mx-2 text-2xl ${
 						checked ? 'text-redDanger' : 'text-greenDone'
 					}`}
@@ -63,9 +63,9 @@ function Todo({ deleteHandler, todos, doneHandler, title, checked, id }) {
 	);
 }
 
-const mapStateToProps = ({ Todos }) => {
-	return { ...Todos };
-};
+// const mapStateToProps = ({ Todos }) => {
+// 	return { ...Todos };
+// };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
@@ -78,4 +78,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Todo);
+export default connect(null, mapDispatchToProps)(Todo);

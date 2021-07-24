@@ -1,6 +1,7 @@
 import React from 'react';
 
 import InputForm from '../input-form/InputForm';
+import PaginationContainer from '../pagination/PaginationContainer';
 import TodoListContainer from '../todo/TodoListContainer';
 
 export default function TodoContainer() {
@@ -8,6 +9,7 @@ export default function TodoContainer() {
 		<div className='mt-10'>
 			<InputForm />
 			<TodoListContainer />
+			<PaginationContainer />
 		</div>
 	);
 }

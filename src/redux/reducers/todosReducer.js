@@ -13,32 +13,40 @@ const INITAL_STATE = {
 			id: 2,
 		},
 	],
+	currentPage: 1,
+	todoPerPage: 5,
 };
 
 const todosReducers = (state = INITAL_STATE, action) => {
-	console.log(action, 'seeaction');
+	// console.log(action, 'seeaction');
 	switch (action.type) {
 		case actionType.ADD_TODO:
 			return {
-				// ...state,
+				...state,
 				todos: [...action.values],
 			};
-		// case actionType.GET_ALL_TODOS:
-		// 	return {
-		// 		// ...state,
-		// 	};
 		case actionType.DELETE_ID:
-			console.log('klikkilk');
 			return {
-				// ...state,
+				...state,
 				todos: [...action.values],
 			};
 		case actionType.CHANGE_DONE:
 			// console.log('done');
 			return {
-				// ...state,
+				...state,
 				todos: [...action.values],
 			};
+		case actionType.NEXT_PAGE || actionType.PREV_PAGE:
+			return {
+				...state,
+				currentPage: action.values,
+			};
+		case actionType.PREV_PAGE:
+			return {
+				...state,
+				currentPage: action.values,
+			};
+
 		default:
 			return state;
 	}
